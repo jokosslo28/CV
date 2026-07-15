@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joko Susilo — Marketing Supervisor &amp; Growth Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F1E6;
+    --paper-dim:#ECE6D6;
+    --ink:#16251B;
+    --ink-soft:#4C5B4F;
+    --green:#2E6E4C;
+    --green-deep:#173D2A;
+    --leaf:#7FC79A;
+    --amber:#C2842A;
+    --line:#D3CCB8;
+    --white:#FFFDF7;
+    --max:960px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important; transition:none!important;}
+  }
+  a{color:var(--green-deep);}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 30px;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* ================= HERO ================= */
+  header.hero{
+    background:
+      radial-gradient(1100px 480px at 82% -10%, rgba(127,199,154,.16), transparent 60%),
+      linear-gradient(165deg, var(--green-deep) 0%, #1C4A33 55%, var(--green) 100%);
+    color:var(--paper);
+    padding:84px 0 0;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero .wrap{position:relative; z-index:2;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--leaf); margin-bottom:22px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .eyebrow::before{content:""; width:34px; height:1px; background:var(--leaf); display:inline-block;}
+  h1.name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(48px, 8.4vw, 84px);
+    line-height:.98;
+    margin:0 0 8px;
+    letter-spacing:-.015em;
+  }
+  h1.name em{
+    font-style:italic; font-weight:500; color:var(--leaf);
+  }
+  .role-line{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(18px, 2.6vw, 23px);
+    color:#D8ECDD; margin:0 0 30px; letter-spacing:.01em;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:8px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px; color:#BFE2CB;
+    padding-bottom:56px;
+  }
+  .hero-meta a{color:inherit; text-decoration:none; border-bottom:1px solid rgba(191,226,203,.45);}
+  .hero-meta a:hover{border-bottom-color:#BFE2CB;}
+
+  /* signature: growth contour field */
+  .contour{
+    position:absolute; inset:auto 0 0 0; height:200px; z-index:1;
+    opacity:.5; pointer-events:none;
+  }
+  .contour path{fill:none; stroke:#8FD6AC; stroke-width:1.4;}
+  .contour path.bold{stroke-width:2.6; opacity:1;}
+  .contour circle{fill:var(--amber);}
+
+  /* strip of big numbers under hero */
+  .hero-strip{
+    position:relative; z-index:2;
+    background:rgba(11,32,21,.35);
+    border-top:1px solid rgba(191,226,203,.25);
+    backdrop-filter:blur(2px);
+  }
+  .hero-strip .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .strip-item{
+    padding:18px 18px 16px 0;
+    border-left:1px solid rgba(191,226,203,.22);
+    padding-left:18px;
+  }
+  .strip-item:first-child{border-left:none; padding-left:0;}
+  .strip-item .v{
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size:clamp(20px,3vw,27px); color:var(--paper); line-height:1.1;
+  }
+  .strip-item .l{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--leaf);
+    margin-top:4px;
+  }
+  @media(max-width:760px){
+    .hero-strip .wrap{grid-template-columns:repeat(2,1fr);}
+    .strip-item:nth-child(3){border-left:none; padding-left:0;}
+  }
+
+  /* ================= SUMMARY ================= */
+  .summary-band{background:var(--white); border-bottom:1px solid var(--line);}
+  .summary-band .wrap{padding:46px 30px;}
+  .summary-band p{font-size:17.5px; color:var(--ink-soft); margin:0; max-width:740px;}
+  .summary-band strong{color:var(--ink); font-weight:600;}
+
+  /* ================= SECTIONS ================= */
+  section{padding:60px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; gap:16px; margin-bottom:36px;}
+  .section-glyph{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    font-size:15px; color:var(--amber);
+  }
+  h2.section-title{
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size:clamp(26px,3.4vw,32px); margin:0; color:var(--green-deep);
+    letter-spacing:-.01em;
+  }
+  .section-head::after{
+    content:""; flex:1; height:1px; background:var(--line); transform:translateY(-6px);
+  }
+
+  /* ================= TIMELINE / ROLES ================= */
+  .timeline{position:relative;}
+  .timeline::before{
+    content:""; position:absolute; left:206px; top:8px; bottom:8px;
+    width:1px; background:linear-gradient(var(--line), var(--green) 55%, var(--line));
+  }
+  .role{
+    display:grid; grid-template-columns:180px 1fr; gap:52px;
+    padding:26px 0; position:relative;
+  }
+  .role::before{
+    content:""; position:absolute; left:201px; top:36px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--paper); border:2.5px solid var(--green);
+  }
+  .role.current::before{background:var(--amber); border-color:var(--amber);}
+  .role-period{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--ink-soft); padding-top:6px; text-align:right;
+  }
+  .role-org{font-size:12.5px; color:var(--green); font-weight:600; margin-top:6px; text-align:right;}
+  h3.role-title{
+    font-family:'Fraunces',serif; font-size:22px; font-weight:600;
+    margin:0 0 4px; color:var(--ink);
+  }
+  .role-tag{
+    display:inline-block; font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--amber); border:1px solid var(--amber);
+    padding:2px 8px; border-radius:999px; margin-bottom:12px;
+  }
+  ul.role-points{margin:8px 0 0; padding-left:18px; color:var(--ink-soft);}
+  ul.role-points li{margin-bottom:7px; font-size:15px;}
+  ul.role-points li::marker{color:var(--amber);}
+  ul.role-points li strong{color:var(--ink); font-weight:600;}
+  @media(max-width:680px){
+    .timeline::before,.role::before{display:none;}
+    .role{grid-template-columns:1fr; gap:8px;}
+    .role-period,.role-org{text-align:left;}
+  }
+
+  /* ================= FREELANCE ================= */
+  .freelance-block{padding:26px 0;}
+  .freelance-block + .freelance-block{border-top:1px dashed var(--line);}
+  .freelance-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .freelance-head h3{font-family:'Fraunces',serif; font-size:21px; margin:0; color:var(--ink);}
+  .freelance-period{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
+  .freelance-desc{color:var(--ink-soft); font-size:15px; margin:6px 0 4px; max-width:720px;}
+
+  .spark-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:18px;}
+  .spark-card{
+    background:var(--white); border:1px solid var(--line);
+    border-left:3px solid var(--green); padding:16px 18px;
+  }
+  .spark-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:10px;}
+  .m-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  .spark-roi{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:var(--amber); white-space:nowrap;}
+  .sparkline{width:100%; height:46px; display:block;}
+  .sparkline polyline{fill:none; stroke:var(--green); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;}
+  .spark-note{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:8px;}
+
+  .metric-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:14px;}
+  .metric-card{
+    background:var(--white); border:1px solid var(--line);
+    border-radius:2px; padding:18px 18px 16px;
+  }
+  .metric-card .m-value{
+    font-family:'Fraunces',serif; font-size:26px; font-weight:600;
+    color:var(--green-deep); line-height:1.15; margin-top:8px;
+  }
+  .metric-card .m-note{font-size:12px; color:var(--ink-soft); margin-top:5px;}
+
+  .growth-callout{
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
+    background:var(--white); border:1px solid var(--line);
+    border-left:3px solid var(--amber); padding:18px 20px; margin-top:16px;
+  }
+  .growth-x{
+    font-family:'Fraunces',serif; font-weight:600; font-style:italic;
+    font-size:44px; color:var(--amber); line-height:1;
+  }
+  .growth-body{flex:1; min-width:220px;}
+  .growth-body .sparkline polyline{stroke:var(--amber);}
+  .growth-caption{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:6px;}
+
+
+  /* ================= ACHIEVEMENTS ================= */
+  .achieve-table{width:100%; border-collapse:collapse; margin-top:6px;}
+  .achieve-table th{
+    text-align:left; font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--ink-soft); padding:10px 14px; border-bottom:2px solid var(--green-deep);
+  }
+  .achieve-table td{padding:12px 14px; border-bottom:1px solid var(--line); font-size:14.5px;}
+  .achieve-table td.num{font-family:'IBM Plex Mono',monospace; font-weight:600; color:var(--green-deep); white-space:nowrap;}
+  .achieve-table tr:hover td{background:var(--white);}
+  .arrow{color:var(--amber);}
+
+  .award-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .award{
+    display:flex; align-items:center; gap:9px;
+    background:var(--white); border:1px solid var(--line);
+    padding:9px 15px; font-size:13.5px;
+  }
+  .award .yr{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber);}
+
+  /* ================= SKILLS ================= */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 40px;}
+  @media(max-width:720px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-group h4{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
+    font-size:17px; color:var(--green-deep); margin:0 0 10px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .skill-group h4::after{content:""; flex:1; height:1px; background:var(--line);}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    background:var(--white); border:1px solid var(--line);
+    padding:6px 12px; border-radius:2px; font-size:13.5px; color:var(--ink);
+  }
+  .chip.hot{border-color:var(--green); color:var(--green-deep); font-weight:500;}
+
+  /* ================= EDU ================= */
+  .edu-lang-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media(max-width:720px){.edu-lang-grid{grid-template-columns:1fr;}}
+  .edu-lang-grid h4{font-family:'Fraunces',serif; font-size:19px; margin:0 0 4px; color:var(--ink);}
+  .edu-lang-grid .sub{color:var(--ink-soft); font-size:14px; margin-bottom:4px;}
+  .edu-lang-grid .fine{font-size:13px; color:var(--ink-soft); font-style:italic;}
+
+  footer{
+    background:var(--green-deep); color:#BFE2CB;
+    padding:34px 0; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    position:relative; overflow:hidden;
+  }
+  footer .sig{
+    font-family:'Fraunces',serif; font-style:italic; font-size:20px;
+    color:var(--paper); margin-bottom:8px;
+  }
+
+  /* ================= PRINT ================= */
+  @media print{
+    @page{margin:14mm 12mm;}
+    body{font-size:11.5px; line-height:1.45; background:#fff;}
+    header.hero{padding:26px 0 0; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    h1.name{font-size:40px;}
+    .hero-meta{padding-bottom:22px;}
+    .contour{display:none;}
+    section{padding:20px 0;}
+    .section-head{margin-bottom:18px;}
+    .role{padding:14px 0; break-inside:avoid;}
+    ul.role-points li{margin-bottom:4px; font-size:11.5px;}
+    .spark-card,.metric-card,.growth-callout,.award{break-inside:avoid;}
+    .achieve-table td,.achieve-table th{padding:7px 10px; font-size:11px;}
+    a{text-decoration:none; color:inherit;}
+    footer{padding:16px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="contour" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,185 C160,178 300,168 420,150 C560,130 680,118 820,92 C960,66 1080,48 1200,26" />
+    <path d="M0,192 C180,186 320,178 460,164 C600,148 740,136 880,112 C1010,90 1110,74 1200,56" />
+    <path class="bold" d="M0,176 C150,168 290,154 430,132 C580,108 700,96 840,68 C980,40 1090,26 1200,6" />
+    <circle cx="840" cy="68" r="4"/>
+    <circle cx="1200" cy="6" r="5"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Curriculum Vitae · Digital Marketing &amp; Growth</div>
+    <h1 class="name">Joko <em>Susilo</em></h1>
+    <p class="role-line">Marketing Supervisor · Content &amp; Growth Strategist · Ads Specialist</p>
+    <div class="hero-meta">
+      <span>Surabaya, Indonesia</span>
+      <span>·</span>
+      <span><a href="https://wa.me/6281259332169">0812-5933-2169</a></span>
+      <span>·</span>
+      <span><a href="mailto:jokosslo28@gmail.com">jokosslo28@gmail.com</a></span>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="wrap">
+      <div class="strip-item"><div class="v">6+ tahun</div><div class="l">Desain · Konten · Growth</div></div>
+      <div class="strip-item"><div class="v">12 orang</div><div class="l">Tim yang disupervisi</div></div>
+      <div class="strip-item"><div class="v">60 Jt+ views/bln</div><div class="l">95% trafik organik</div></div>
+      <div class="strip-item"><div class="v">ROI &gt; 7×</div><div class="l">TikTok Shop Ads</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="summary-band">
+  <div class="wrap">
+    <p>Marketing Supervisor dengan <strong>6+ tahun pengalaman</strong> lintas desain, konten, dan performance marketing. Memimpin tim yang membawa pertumbuhan audiens dari ratusan ribu menjadi <strong>jutaan follower</strong> di Instagram, TikTok, dan YouTube. Kontribusi strategi konten dan program afiliasi turut mendorong kenaikan penjualan harian hingga <strong>sepuluh kali lipat</strong>. Di luar peran utama, menangani proyek TikTok Shop Ads dan pertumbuhan sosial media untuk brand lain beda kategori, dengan rekam jejak <strong>ROI konsisten di atas 7×</strong>.</p>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-glyph">no. 1 —</span>
+      <h2 class="section-title">Pengalaman Profesional</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="role current">
+        <div>
+          <div class="role-period">Okt 2024 — Sekarang</div>
+          <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        </div>
+        <div>
+          <h3 class="role-title">Marketing Supervisor (SPV Marketing)</h3>
+          <span class="role-tag">Peran saat ini</span>
+          <ul class="role-points">
+            <li>Memimpin 3 sub-tim (Graphic Design, Content Creator, KOL &amp; Affiliate) plus Planning Specialist — <strong>total 12 orang</strong>, termasuk pengembangan kapasitas para team lead</li>
+            <li>Menyusun proyeksi target dan budgeting bulanan, kuartalan, dan tahunan sebagai dasar alokasi sumber daya tim</li>
+            <li>Merancang dan memonitor KPI lintas tim — mengukur <strong>ROI, CPA, CPM, CPV</strong>, dan performa marketing funnel (TOFU/MOFU/BOFU)</li>
+            <li>Menyusun strategi departemen jangka panjang &amp; pendek: key messaging, produk push, dan analisis kompetitor</li>
+            <li>Menganalisis customer insight untuk merumuskan strategi konten yang menjawab permasalahan spesifik customer</li>
+            <li>Membangun sistem tracking performa weekly &amp; monthly sebagai dasar evaluasi dan pengambilan keputusan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div>
+          <div class="role-period">Des 2022 — Okt 2024</div>
+          <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        </div>
+        <div>
+          <h3 class="role-title">Leader Marketing</h3>
+          <ul class="role-points">
+            <li>Memimpin 3 tim (Graphic Design, Content Creator, KOL &amp; Affiliate) — eksekusi langsung strategi konten, kalender editorial, program afiliasi, dan arahan kreatif harian</li>
+            <li>Menskalakan konten organik dari <strong>24 juta menjadi 60 juta+ views/bulan</strong> (95% trafik organik)</li>
+            <li>Membawa channel YouTube dari <strong>23K menjadi 439K subscriber</strong> hingga meraih <strong>Silver Play Button</strong> (Des 2022)</li>
+            <li>Mengembangkan dan meng-handle <strong>10 akun sosial media</strong> secara paralel, menjadikannya ekosistem kanal yang saling menguatkan lintas platform</li>
+            <li>Merancang strategi program afiliasi end-to-end: rekrutmen KOL, skema komisi, dan aktivasi kampanye</li>
+            <li>Merancang KPI framework per tim, menganalisa performa weekly &amp; monthly, serta reporting bulanan ke manajemen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div>
+          <div class="role-period">Mei 2022 — Nov 2022</div>
+          <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        </div>
+        <div>
+          <h3 class="role-title">Content Creator</h3>
+          <ul class="role-points">
+            <li>Produksi video end-to-end (riset tren, skrip, pengambilan gambar, editing CapCut &amp; Adobe Premiere) untuk konten edukasi dan storytelling berkebun di TikTok, Instagram, dan YouTube</li>
+            <li>Menaikkan penjualan harian <strong>2× — dari 400–500 menjadi 800–1.000 paket</strong> dalam 6 bulan melalui strategi konten</li>
+            <li>Menyusun konten pillar dan brand archetype, serta membangun SOP produksi konten</li>
+            <li>Konten yang diproduksi turut berkontribusi pada <strong>TikTok Most Wanted Brand Award 2022</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div>
+          <div class="role-period">Okt 2021 — Apr 2022</div>
+          <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        </div>
+        <div>
+          <h3 class="role-title">Graphic Designer</h3>
+          <ul class="role-points">
+            <li>Menentukan konsep dan karakter desain produk dalam proses rebranding kemasan untuk seluruh lini produk</li>
+            <li>Mendesain materi promo, feed sosial media, key visual, banner marketplace, dan katalog produk</li>
+            <li>Menjaga konsistensi identitas visual brand lintas platform sosial media dan marketplace (Shopee &amp; TikTok Shop)</li>
+            <li>Melakukan foto produk dan retouching sesuai kebutuhan perusahaan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div>
+          <div class="role-period">Jul 2021 — Sep 2021</div>
+          <div class="role-org">CV Amelia Shop</div>
+        </div>
+        <div>
+          <h3 class="role-title">Content Creator</h3>
+          <ul class="role-points">
+            <li>Mendesain banner marketplace, materi promo, feed sosial media, dan katalog produk — disesuaikan dengan ketentuan tiap platform</li>
+            <li>Menangani foto produk end-to-end, dari pengambilan gambar hingga retouching</li>
+            <li>Mengelola publikasi konten dan menganalisis performa (views, engagement, pertumbuhan follower)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div>
+          <div class="role-period">Nov 2018 — Jul 2021</div>
+          <div class="role-org">Maxiplus Digital Printing</div>
+        </div>
+        <div>
+          <h3 class="role-title">Graphic Designer</h3>
+          <ul class="role-points">
+            <li>Mendesain poster, logo, banner, dan berbagai materi promosi sesuai brief klien digital printing</li>
+            <li>Menerjemahkan kebutuhan klien menjadi desain siap cetak, termasuk penyesuaian file untuk produksi</li>
+            <li>Dipercaya memegang tanggung jawab tambahan menangani pelanggan online via WhatsApp, kasir, dan operasional toko</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FREELANCE -->
+<section id="freelance">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-glyph">no. 2 —</span>
+      <h2 class="section-title">Proyek Independen — Ads &amp; Social Growth</h2>
+    </div>
+
+    <div class="freelance-block">
+      <div class="freelance-head">
+        <h3>Bluecore &amp; Claryn — TikTok Shop Ads Specialist</h3>
+        <span class="freelance-period">Nov 2025 — Feb 2026</span>
+      </div>
+      <p class="freelance-desc">Mengelola kampanye GMV Max di TikTok Ads Manager untuk dua brand secara paralel, mencakup perencanaan budget, optimasi bidding &amp; targeting, hingga evaluasi performa mingguan dan bulanan.</p>
+
+      <div class="spark-row">
+        <div class="spark-card">
+          <div class="spark-top">
+            <span class="m-label">Tren Penghasilan Toko — Bluecore</span>
+            <span class="spark-roi">ROI 7,14×</span>
+          </div>
+          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,44 15,42 30,40 45,43 60,38 75,41 90,36 105,39 120,34 135,37 150,32 165,35 180,30 195,26 210,22 225,25 240,15 255,20 270,10 285,16 300,8"/>
+          </svg>
+          <div class="spark-note">Nov 2025 – Feb 2026</div>
+        </div>
+        <div class="spark-card">
+          <div class="spark-top">
+            <span class="m-label">Tren Penghasilan Toko — Claryn</span>
+            <span class="spark-roi">ROI 7,34×</span>
+          </div>
+          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,46 15,44 30,20 45,42 60,38 75,40 90,35 105,38 120,30 135,34 150,28 165,32 180,26 195,30 210,24 225,28 240,22 255,26 270,4 285,18 300,15"/>
+          </svg>
+          <div class="spark-note">Des 2025 – Feb 2026</div>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="m-label">ROI Kampanye</div>
+          <div class="m-value">Konsisten &gt; 7×</div>
+        </div>
+        <div class="metric-card">
+          <div class="m-label">Total Pesanan (2 Brand)</div>
+          <div class="m-value">±84.500</div>
+        </div>
+        <div class="metric-card">
+          <div class="m-label">Spending Iklan / Bulan</div>
+          <div class="m-value">Rp 135–180 Jt</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="freelance-block">
+      <div class="freelance-head">
+        <h3>Coozmed — Social Media Growth Specialist</h3>
+        <span class="freelance-period">Project-based</span>
+      </div>
+      <p class="freelance-desc">Strategi pertumbuhan organik lintas TikTok dan Instagram.</p>
+
+      <div class="growth-callout">
+        <div class="growth-x">±9,7×</div>
+        <div class="growth-body">
+          <div class="m-label">Tren Pertumbuhan Follower — TikTok &amp; Instagram (Mirroring)</div>
+          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,52 20,51 40,50 60,48 80,46 100,43 120,40 140,36 160,32 180,28 200,24 220,19 240,15 260,11 280,8 300,5"/>
+          </svg>
+          <div class="growth-caption">Pertumbuhan organik hampir 10 kali lipat — tren serupa terjadi paralel di TikTok dan Instagram</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-glyph">no. 3 —</span>
+      <h2 class="section-title">Ringkasan Pencapaian</h2>
+    </div>
+    <table class="achieve-table">
+      <thead>
+        <tr>
+          <th>Channel / Proyek</th>
+          <th>Sebelum</th>
+          <th>Sesudah</th>
+          <th>Catatan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instagram (Infarm)</td>
+          <td class="num">300K</td>
+          <td class="num">1,6 Jt</td>
+          <td>Centang biru terverifikasi</td>
+        </tr>
+        <tr>
+          <td>TikTok (Infarm)</td>
+          <td class="num">200K</td>
+          <td class="num">933K</td>
+          <td>Centang biru terverifikasi</td>
+        </tr>
+        <tr>
+          <td>YouTube (Infarm)</td>
+          <td class="num">23K</td>
+          <td class="num">439K</td>
+          <td>Silver Play Button (Des 2022)</td>
+        </tr>
+        <tr>
+          <td>Views organik bulanan (Infarm)</td>
+          <td class="num">24 Jt</td>
+          <td class="num">60 Jt+</td>
+          <td>2022–2024 · 95% trafik organik</td>
+        </tr>
+        <tr>
+          <td>Penjualan harian (Infarm)</td>
+          <td class="num">400–500 paket</td>
+          <td class="num">4.500–5.000 paket</td>
+          <td>Akumulasi 2022–2024 (fase konten 2022: 2× ke 800–1.000) · kontribusi strategi konten &amp; afiliasi tim marketing</td>
+        </tr>
+        <tr>
+          <td>TikTok &amp; Instagram (Coozmed, freelance)</td>
+          <td class="num">—</td>
+          <td class="num">±9,7× pertumbuhan</td>
+          <td>Organik, tren mirroring dua platform</td>
+        </tr>
+        <tr>
+          <td>Bluecore &amp; Claryn Ads (freelance)</td>
+          <td class="num">—</td>
+          <td class="num">ROI &gt; 7× · ±84.500 pesanan</td>
+          <td>Dua brand, kampanye paralel, spending Rp135–180 Jt/bulan</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="award-row">
+      <div class="award">🏆 TikTok Most Wanted Brand Award <span class="yr">2022</span></div>
+      <div class="award">▶ YouTube Silver Play Button <span class="yr">Des 2022</span></div>
+      <div class="award">★ Brand Choice Awards</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-glyph">no. 4 —</span>
+      <h2 class="section-title">Keahlian</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Strategi &amp; Kepemimpinan</h4>
+        <div class="chip-row">
+          <span class="chip hot">Team Leadership (12 orang)</span>
+          <span class="chip hot">Budgeting &amp; Proyeksi Target</span>
+          <span class="chip">KPI Framework Design</span>
+          <span class="chip">Strategic Planning</span>
+          <span class="chip">Pengembangan Team Lead</span>
+          <span class="chip">Analisis Kompetitor</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Marketing &amp; Analitik</h4>
+        <div class="chip-row">
+          <span class="chip hot">TikTok Shop Ads (GMV Max)</span>
+          <span class="chip hot">ROI / CPA / CPM / CPV Tracking</span>
+          <span class="chip">Marketing Funnel (TOFU/MOFU/BOFU)</span>
+          <span class="chip">Customer Insight Analysis</span>
+          <span class="chip">KOL &amp; Affiliate Management</span>
+          <span class="chip">Shopee &amp; TikTok Seller Center</span>
+          <span class="chip">Google Sheets Analytics</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Konten &amp; Growth</h4>
+        <div class="chip-row">
+          <span class="chip hot">Strategi Konten TikTok / IG / YouTube</span>
+          <span class="chip">Scripting &amp; Storyboard</span>
+          <span class="chip">Konten Pillar &amp; Brand Archetype</span>
+          <span class="chip">SOP Produksi Konten</span>
+          <span class="chip">Produksi Video End-to-End</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Desain &amp; Produksi</h4>
+        <div class="chip-row">
+          <span class="chip">Adobe Photoshop</span>
+          <span class="chip">Adobe Premiere Pro</span>
+          <span class="chip">CapCut</span>
+          <span class="chip">CorelDRAW</span>
+          <span class="chip">Foto Produk &amp; Retouching</span>
+          <span class="chip">Animasi 2D</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & LANGUAGES -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-glyph">no. 5 —</span>
+      <h2 class="section-title">Pendidikan &amp; Bahasa</h2>
+    </div>
+    <div class="edu-lang-grid">
+      <div>
+        <h4>SMK Negeri 1 Poncol</h4>
+        <div class="sub">Multimedia — Lulus 2018</div>
+        <div class="fine">Produksi video, desain majalah, animasi 2D, desain grafis, instalasi komputer</div>
+      </div>
+      <div>
+        <h4>Bahasa</h4>
+        <div class="sub">Bahasa Indonesia — Native</div>
+        <div class="sub">Bahasa Inggris — Intermediate (Business Communication)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">Joko Susilo</div>
+  Marketing Supervisor &amp; Growth Specialist · Surabaya, Indonesia · 0812-5933-2169 · jokosslo28@gmail.com
+</footer>
+
+</body>
+</html>
