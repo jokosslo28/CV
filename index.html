@@ -8,340 +8,327 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --paper:#F5F1E6;
-    --paper-dim:#ECE6D6;
-    --ink:#16251B;
-    --ink-soft:#4C5B4F;
-    --green:#2E6E4C;
-    --green-deep:#173D2A;
-    --leaf:#7FC79A;
-    --amber:#C2842A;
-    --line:#D3CCB8;
-    --white:#FFFDF7;
-    --max:960px;
-  }
-  *{box-sizing:border-box;}
+  *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
     font-family:'Inter',sans-serif;
-    font-size:16px;
-    line-height:1.62;
+    font-size:16px;line-height:1.65;
+    color:#1E2245;
     -webkit-font-smoothing:antialiased;
+    background:#D7DCF0;
+    background-image:
+      radial-gradient(ellipse 55% 50% at 15% 8%, rgba(167,199,231,.6), transparent),
+      radial-gradient(ellipse 45% 45% at 85% 15%, rgba(195,175,225,.5), transparent),
+      radial-gradient(ellipse 50% 40% at 50% 55%, rgba(180,210,240,.35), transparent),
+      radial-gradient(ellipse 40% 35% at 80% 85%, rgba(212,181,208,.3), transparent),
+      radial-gradient(ellipse 35% 30% at 10% 90%, rgba(167,199,231,.25), transparent);
+    background-attachment:fixed;
+    min-height:100vh;
+    overflow-x:hidden;
   }
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none!important; transition:none!important;}
-  }
-  a{color:var(--green-deep);}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 30px;}
-  .mono{font-family:'IBM Plex Mono',monospace;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+  a{color:#4A62B3;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px;}
 
-  /* ================= HERO ================= */
-  header.hero{
-    background:
-      radial-gradient(1100px 480px at 82% -10%, rgba(127,199,154,.16), transparent 60%),
-      linear-gradient(165deg, var(--green-deep) 0%, #1C4A33 55%, var(--green) 100%);
-    color:var(--paper);
-    padding:84px 0 0;
-    position:relative;
-    overflow:hidden;
+  /* ====== FLOATING BUBBLES (decorative, fixed) ====== */
+  .orb{
+    position:fixed;border-radius:50%;pointer-events:none;z-index:0;
+    filter:blur(1px);
   }
-  header.hero .wrap{position:relative; z-index:2;}
+  .orb::after{
+    content:"";position:absolute;border-radius:50%;
+    top:12%;left:18%;width:35%;height:25%;
+    background:radial-gradient(ellipse, rgba(255,255,255,.55), transparent 70%);
+    transform:rotate(-25deg);
+  }
+  .o1{
+    width:220px;height:220px;top:-40px;right:-30px;
+    background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.45), rgba(167,199,231,.25) 50%, rgba(195,175,225,.12) 100%);
+    border:1px solid rgba(255,255,255,.35);
+  }
+  .o2{
+    width:130px;height:130px;top:35%;left:-40px;
+    background:radial-gradient(circle at 40% 30%, rgba(255,255,255,.4), rgba(195,175,225,.2) 55%, rgba(180,210,240,.1) 100%);
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .o3{
+    width:80px;height:80px;bottom:20%;right:3%;
+    background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.5), rgba(212,181,208,.2) 60%, transparent 100%);
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .o4{
+    width:50px;height:50px;top:60%;right:12%;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.5), rgba(167,199,231,.2) 60%, transparent 100%);
+    border:1px solid rgba(255,255,255,.25);
+  }
+
+  /* ====== HERO ====== */
+  header.hero{
+    position:relative;z-index:1;
+    padding:80px 0 52px;
+  }
+  .hero-glass{
+    background:linear-gradient(145deg, rgba(255,255,255,.52), rgba(255,255,255,.22) 70%, rgba(195,175,225,.12));
+    backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:32px;
+    padding:52px 48px 44px;
+    box-shadow:
+      0 8px 40px rgba(100,110,160,.08),
+      inset 0 1px 0 rgba(255,255,255,.5);
+    position:relative;overflow:hidden;
+  }
+  /* inner glow blob */
+  .hero-glass::before{
+    content:"";position:absolute;
+    width:280px;height:280px;border-radius:50%;
+    top:-80px;right:-60px;
+    background:radial-gradient(circle, rgba(167,199,231,.3), rgba(195,175,225,.15) 50%, transparent 75%);
+    pointer-events:none;
+  }
   .eyebrow{
     font-family:'IBM Plex Mono',monospace;
-    font-size:12.5px; letter-spacing:.18em; text-transform:uppercase;
-    color:var(--leaf); margin-bottom:22px;
-    display:flex; align-items:center; gap:12px;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(74,98,179,.7);margin-bottom:16px;
+    position:relative;z-index:1;
   }
-  .eyebrow::before{content:""; width:34px; height:1px; background:var(--leaf); display:inline-block;}
   h1.name{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    font-size:clamp(48px, 8.4vw, 84px);
-    line-height:.98;
-    margin:0 0 8px;
-    letter-spacing:-.015em;
+    font-family:'Fraunces',serif;font-weight:700;
+    font-size:clamp(44px,8vw,76px);line-height:.96;
+    margin-bottom:8px;letter-spacing:-.02em;
+    position:relative;z-index:1;
+    background:linear-gradient(135deg, #1E2245 30%, #4A62B3 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
   }
   h1.name em{
-    font-style:italic; font-weight:500; color:var(--leaf);
+    font-style:italic;font-weight:500;
+    background:linear-gradient(135deg, #4A62B3, #8B6DB5);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    background-clip:text;
   }
   .role-line{
-    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
-    font-size:clamp(18px, 2.6vw, 23px);
-    color:#D8ECDD; margin:0 0 30px; letter-spacing:.01em;
+    font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:clamp(15px,2.2vw,19px);
+    color:#6B74A0;margin-bottom:22px;
+    position:relative;z-index:1;
   }
   .hero-meta{
-    display:flex; flex-wrap:wrap; gap:8px 22px;
+    display:flex;flex-wrap:wrap;gap:6px 18px;
     font-family:'IBM Plex Mono',monospace;
-    font-size:13px; color:#BFE2CB;
-    padding-bottom:56px;
+    font-size:12.5px;color:#7D84A8;
+    position:relative;z-index:1;
   }
-  .hero-meta a{color:inherit; text-decoration:none; border-bottom:1px solid rgba(191,226,203,.45);}
-  .hero-meta a:hover{border-bottom-color:#BFE2CB;}
-
-  /* signature: growth contour field */
-  .contour{
-    position:absolute; inset:auto 0 0 0; height:200px; z-index:1;
-    opacity:.5; pointer-events:none;
-  }
-  .contour path{fill:none; stroke:#8FD6AC; stroke-width:1.4;}
-  .contour path.bold{stroke-width:2.6; opacity:1;}
-  .contour circle{fill:var(--amber);}
-
-  /* strip of big numbers under hero */
-  .hero-strip{
-    position:relative; z-index:2;
-    background:rgba(11,32,21,.35);
-    border-top:1px solid rgba(191,226,203,.25);
-    backdrop-filter:blur(2px);
-  }
-  .hero-strip .wrap{
-    display:grid; grid-template-columns:repeat(4,1fr);
-    gap:0;
-  }
-  .strip-item{
-    padding:18px 18px 16px 0;
-    border-left:1px solid rgba(191,226,203,.22);
-    padding-left:18px;
-  }
-  .strip-item:first-child{border-left:none; padding-left:0;}
-  .strip-item .v{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:clamp(20px,3vw,27px); color:var(--paper); line-height:1.1;
-  }
-  .strip-item .l{
-    font-family:'IBM Plex Mono',monospace; font-size:10.5px;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--leaf);
-    margin-top:4px;
-  }
-  @media(max-width:760px){
-    .hero-strip .wrap{grid-template-columns:repeat(2,1fr);}
-    .strip-item:nth-child(3){border-left:none; padding-left:0;}
+  .hero-meta a{
+    color:#4A62B3;
+    border-bottom:1px solid rgba(74,98,179,.25);
+    text-decoration:none;
   }
 
-  /* ================= SUMMARY ================= */
-  .summary-band{background:var(--white); border-bottom:1px solid var(--line);}
-  .summary-band .wrap{padding:46px 30px;}
-  .summary-band p{font-size:17.5px; color:var(--ink-soft); margin:0; max-width:740px;}
-  .summary-band strong{color:var(--ink); font-weight:600;}
+  /* ====== SUMMARY ====== */
+  .summary{
+    position:relative;z-index:1;
+    margin-top:28px;
+    padding:30px 36px;
+    background:linear-gradient(135deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:24px;
+    box-shadow:0 4px 24px rgba(100,110,160,.06);
+  }
+  .summary p{
+    font-size:16px;color:#4A4E6E;line-height:1.75;
+  }
 
-  /* ================= SECTIONS ================= */
-  section{padding:60px 0;}
-  section + section{border-top:1px solid var(--line);}
-  .section-head{display:flex; align-items:baseline; gap:16px; margin-bottom:36px;}
-  .section-glyph{
-    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
-    font-size:15px; color:var(--amber);
+  /* ====== SECTIONS ====== */
+  section{position:relative;z-index:1;padding:52px 0 0;}
+  .section-head{
+    display:flex;align-items:center;gap:14px;margin-bottom:32px;
+  }
+  .section-badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:#fff;
+    background:linear-gradient(135deg, #7B8FD4, #A593C7);
+    padding:5px 14px;border-radius:999px;
+    white-space:nowrap;
   }
   h2.section-title{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:clamp(26px,3.4vw,32px); margin:0; color:var(--green-deep);
-    letter-spacing:-.01em;
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(24px,3.2vw,30px);color:#1E2245;
   }
   .section-head::after{
-    content:""; flex:1; height:1px; background:var(--line); transform:translateY(-6px);
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg, rgba(123,143,212,.3), transparent 80%);
   }
 
-  /* ================= TIMELINE / ROLES ================= */
-  .timeline{position:relative;}
+  /* ====== TIMELINE ====== */
+  .timeline{position:relative;padding-left:28px;}
   .timeline::before{
-    content:""; position:absolute; left:206px; top:8px; bottom:8px;
-    width:1px; background:linear-gradient(var(--line), var(--green) 55%, var(--line));
+    content:"";position:absolute;left:7px;top:10px;bottom:10px;
+    width:2px;
+    background:linear-gradient(180deg, rgba(123,143,212,.35), rgba(165,147,199,.25) 50%, rgba(212,181,208,.15));
+    border-radius:2px;
   }
   .role{
-    display:grid; grid-template-columns:180px 1fr; gap:52px;
-    padding:26px 0; position:relative;
+    position:relative;padding:0 0 36px;
   }
+  .role:last-child{padding-bottom:0;}
   .role::before{
-    content:""; position:absolute; left:201px; top:36px;
-    width:11px; height:11px; border-radius:50%;
-    background:var(--paper); border:2.5px solid var(--green);
+    content:"";position:absolute;
+    left:-24px;top:8px;
+    width:14px;height:14px;border-radius:50%;
+    background:radial-gradient(circle at 40% 40%, rgba(255,255,255,.8), rgba(123,143,212,.25));
+    border:2px solid rgba(123,143,212,.4);
+    box-shadow:0 0 8px rgba(123,143,212,.15);
   }
-  .role.current::before{background:var(--amber); border-color:var(--amber);}
-  .role-period{
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
-    color:var(--ink-soft); padding-top:6px; text-align:right;
+  .role.current::before{
+    background:radial-gradient(circle at 40% 40%, #fff, rgba(123,143,212,.4));
+    border-color:rgba(74,98,179,.6);
+    box-shadow:0 0 12px rgba(74,98,179,.25);
   }
-  .role-org{font-size:12.5px; color:var(--green); font-weight:600; margin-top:6px; text-align:right;}
+  .role-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    flex-wrap:wrap;gap:4px 16px;margin-bottom:4px;
+  }
   h3.role-title{
-    font-family:'Fraunces',serif; font-size:22px; font-weight:600;
-    margin:0 0 4px; color:var(--ink);
+    font-family:'Fraunces',serif;font-size:20px;font-weight:600;
+    color:#1E2245;
+  }
+  .role-period{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    color:#8B90B3;
+  }
+  .role-org{
+    font-size:13.5px;color:#5E6AA0;font-weight:500;margin-bottom:2px;
   }
   .role-tag{
-    display:inline-block; font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--amber); border:1px solid var(--amber);
-    padding:2px 8px; border-radius:999px; margin-bottom:12px;
+    display:inline-block;font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:#fff;
+    background:linear-gradient(135deg, #7B8FD4, #A593C7);
+    padding:3px 10px;border-radius:999px;margin-bottom:6px;
   }
-  ul.role-points{margin:8px 0 0; padding-left:18px; color:var(--ink-soft);}
-  ul.role-points li{margin-bottom:7px; font-size:15px;}
-  ul.role-points li::marker{color:var(--amber);}
-  ul.role-points li strong{color:var(--ink); font-weight:600;}
-  @media(max-width:680px){
-    .timeline::before,.role::before{display:none;}
-    .role{grid-template-columns:1fr; gap:8px;}
-    .role-period,.role-org{text-align:left;}
+  ul.role-points{margin-top:8px;padding-left:18px;color:#4A4E6E;}
+  ul.role-points li{margin-bottom:5px;font-size:14.5px;line-height:1.6;}
+  ul.role-points li::marker{color:rgba(123,143,212,.5);}
+
+  /* separator between roles */
+  .role + .role{
+    border-top:1px solid rgba(123,143,212,.12);
+    padding-top:28px;
   }
 
-  /* ================= FREELANCE ================= */
-  .freelance-block{padding:26px 0;}
-  .freelance-block + .freelance-block{border-top:1px dashed var(--line);}
-  .freelance-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
-  .freelance-head h3{font-family:'Fraunces',serif; font-size:21px; margin:0; color:var(--ink);}
-  .freelance-period{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
-  .freelance-desc{color:var(--ink-soft); font-size:15px; margin:6px 0 4px; max-width:720px;}
+  /* ====== SKILLS ====== */
+  .skills-wrap{
+    display:flex;flex-direction:column;gap:20px;
+  }
+  .skill-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .skill-label{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:14.5px;color:#4A62B3;
+    white-space:nowrap;min-width:150px;
+  }
+  .skill-pills{display:flex;flex-wrap:wrap;gap:6px;}
+  .pill{
+    font-size:12.5px;color:#4A4E6E;line-height:1.35;
+    padding:5px 14px;border-radius:999px;
+    background:linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,255,255,.25));
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.5);
+    box-shadow:0 2px 8px rgba(100,110,160,.06);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .pill:hover{
+    transform:translateY(-1px);
+    box-shadow:0 4px 14px rgba(100,110,160,.1);
+  }
 
-  .spark-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin-top:18px;}
-  .spark-card{
-    background:var(--white); border:1px solid var(--line);
-    border-left:3px solid var(--green); padding:16px 18px;
-  }
-  .spark-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:10px;}
-  .m-label{
-    font-family:'IBM Plex Mono',monospace; font-size:11px;
-    letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
-  }
-  .spark-roi{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:var(--amber); white-space:nowrap;}
-  .sparkline{width:100%; height:46px; display:block;}
-  .sparkline polyline{fill:none; stroke:var(--green); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;}
-  .spark-note{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:8px;}
-
-  .metric-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:14px;}
-  .metric-card{
-    background:var(--white); border:1px solid var(--line);
-    border-radius:2px; padding:18px 18px 16px;
-  }
-  .metric-card .m-value{
-    font-family:'Fraunces',serif; font-size:26px; font-weight:600;
-    color:var(--green-deep); line-height:1.15; margin-top:8px;
-  }
-  .metric-card .m-note{font-size:12px; color:var(--ink-soft); margin-top:5px;}
-
-  .growth-callout{
-    display:flex; align-items:center; gap:22px; flex-wrap:wrap;
-    background:var(--white); border:1px solid var(--line);
-    border-left:3px solid var(--amber); padding:18px 20px; margin-top:16px;
-  }
-  .growth-x{
-    font-family:'Fraunces',serif; font-weight:600; font-style:italic;
-    font-size:44px; color:var(--amber); line-height:1;
-  }
-  .growth-body{flex:1; min-width:220px;}
-  .growth-body .sparkline polyline{stroke:var(--amber);}
-  .growth-caption{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:6px;}
-
-
-  /* ================= ACHIEVEMENTS ================= */
-  .achieve-table{width:100%; border-collapse:collapse; margin-top:6px;}
-  .achieve-table th{
-    text-align:left; font-family:'IBM Plex Mono',monospace;
-    font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
-    color:var(--ink-soft); padding:10px 14px; border-bottom:2px solid var(--green-deep);
-  }
-  .achieve-table td{padding:12px 14px; border-bottom:1px solid var(--line); font-size:14.5px;}
-  .achieve-table td.num{font-family:'IBM Plex Mono',monospace; font-weight:600; color:var(--green-deep); white-space:nowrap;}
-  .achieve-table tr:hover td{background:var(--white);}
-  .arrow{color:var(--amber);}
-
-  .award-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
-  .award{
-    display:flex; align-items:center; gap:9px;
-    background:var(--white); border:1px solid var(--line);
-    padding:9px 15px; font-size:13.5px;
-  }
-  .award .yr{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber);}
-
-  /* ================= SKILLS ================= */
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px 40px;}
-  @media(max-width:720px){.skills-grid{grid-template-columns:1fr;}}
-  .skill-group h4{
-    font-family:'Fraunces',serif; font-style:italic; font-weight:500;
-    font-size:17px; color:var(--green-deep); margin:0 0 10px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .skill-group h4::after{content:""; flex:1; height:1px; background:var(--line);}
-  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    background:var(--white); border:1px solid var(--line);
-    padding:6px 12px; border-radius:2px; font-size:13.5px; color:var(--ink);
-  }
-  .chip.hot{border-color:var(--green); color:var(--green-deep); font-weight:500;}
-
-  /* ================= EDU ================= */
-  .edu-lang-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
-  @media(max-width:720px){.edu-lang-grid{grid-template-columns:1fr;}}
-  .edu-lang-grid h4{font-family:'Fraunces',serif; font-size:19px; margin:0 0 4px; color:var(--ink);}
-  .edu-lang-grid .sub{color:var(--ink-soft); font-size:14px; margin-bottom:4px;}
-  .edu-lang-grid .fine{font-size:13px; color:var(--ink-soft); font-style:italic;}
-
+  /* ====== FOOTER ====== */
   footer{
-    background:var(--green-deep); color:#BFE2CB;
-    padding:34px 0; text-align:center;
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px;
-    position:relative; overflow:hidden;
+    position:relative;z-index:1;
+    margin-top:56px;padding:32px 0;text-align:center;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    color:#8B90B3;
   }
   footer .sig{
-    font-family:'Fraunces',serif; font-style:italic; font-size:20px;
-    color:var(--paper); margin-bottom:8px;
+    font-family:'Fraunces',serif;font-style:italic;font-size:20px;
+    color:#1E2245;margin-bottom:6px;
   }
 
-  /* ================= PRINT ================= */
+  /* ====== RESPONSIVE ====== */
+  @media(max-width:680px){
+    .hero-glass{padding:36px 26px 30px;border-radius:24px;}
+    .hero-glass::before{width:160px;height:160px;top:-50px;right:-40px;}
+    h1.name{font-size:clamp(36px,11vw,50px);}
+    .summary{padding:22px 22px;border-radius:18px;}
+    .timeline{padding-left:24px;}
+    .role-top{flex-direction:column;}
+    .skill-row{flex-direction:column;gap:6px;}
+    .skill-label{min-width:auto;}
+    .o1{width:140px;height:140px;right:-50px;}
+    .o2{width:80px;height:80px;left:-30px;}
+    .o3,.o4{display:none;}
+  }
+  @media(max-width:420px){
+    .wrap{padding:0 16px;}
+    .hero-glass{padding:28px 20px 24px;}
+    .hero-meta{font-size:11px;}
+  }
+
+  /* ====== PRINT ====== */
   @media print{
     @page{margin:14mm 12mm;}
-    body{font-size:11.5px; line-height:1.45; background:#fff;}
-    header.hero{padding:26px 0 0; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
-    h1.name{font-size:40px;}
-    .hero-meta{padding-bottom:22px;}
-    .contour{display:none;}
-    section{padding:20px 0;}
-    .section-head{margin-bottom:18px;}
-    .role{padding:14px 0; break-inside:avoid;}
-    ul.role-points li{margin-bottom:4px; font-size:11.5px;}
-    .spark-card,.metric-card,.growth-callout,.award{break-inside:avoid;}
-    .achieve-table td,.achieve-table th{padding:7px 10px; font-size:11px;}
-    a{text-decoration:none; color:inherit;}
-    footer{padding:16px 0;}
+    body{font-size:11.5px;line-height:1.45;background:#fff!important;background-image:none!important;}
+    .orb{display:none;}
+    .hero-glass,.summary{
+      background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;
+      box-shadow:none;border:1px solid #ddd;
+    }
+    .hero-glass::before{display:none;}
+    h1.name,h1.name em{-webkit-text-fill-color:initial;background:none;color:#1E2245;}
+    h1.name em{color:#4A62B3;}
+    header.hero{padding:20px 0;}
+    section{padding:16px 0;}
+    .timeline::before{background:#ccc;}
+    .role::before{background:#fff;border-color:#999;box-shadow:none;}
+    .role{break-inside:avoid;}
+    ul.role-points li{margin-bottom:3px;font-size:11px;}
+    .pill{background:#f5f5f5;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;border:1px solid #ddd;}
+    .section-badge{background:#666;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    a{text-decoration:none;color:inherit;}
+    footer{margin-top:20px;padding:14px 0;}
   }
 </style>
 </head>
 <body>
 
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+<div class="orb o4"></div>
+
 <header class="hero">
-  <svg class="contour" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,185 C160,178 300,168 420,150 C560,130 680,118 820,92 C960,66 1080,48 1200,26" />
-    <path d="M0,192 C180,186 320,178 460,164 C600,148 740,136 880,112 C1010,90 1110,74 1200,56" />
-    <path class="bold" d="M0,176 C150,168 290,154 430,132 C580,108 700,96 840,68 C980,40 1090,26 1200,6" />
-    <circle cx="840" cy="68" r="4"/>
-    <circle cx="1200" cy="6" r="5"/>
-  </svg>
   <div class="wrap">
-    <div class="eyebrow">Curriculum Vitae · Digital Marketing &amp; Growth</div>
-    <h1 class="name">Joko <em>Susilo</em></h1>
-    <p class="role-line">Marketing Supervisor · Content &amp; Growth Strategist · Ads Specialist</p>
-    <div class="hero-meta">
-      <span>Surabaya, Indonesia</span>
-      <span>·</span>
-      <span><a href="https://wa.me/6281259332169">0812-5933-2169</a></span>
-      <span>·</span>
-      <span><a href="mailto:jokosslo28@gmail.com">jokosslo28@gmail.com</a></span>
-    </div>
-  </div>
-  <div class="hero-strip">
-    <div class="wrap">
-      <div class="strip-item"><div class="v">6+ years</div><div class="l">Design · Content · Growth</div></div>
-      <div class="strip-item"><div class="v">12 people</div><div class="l">Team supervised</div></div>
-      <div class="strip-item"><div class="v">60M+ views/mo</div><div class="l">95% organic traffic</div></div>
-      <div class="strip-item"><div class="v">ROI &gt; 7×</div><div class="l">TikTok Shop Ads</div></div>
+    <div class="hero-glass">
+      <div class="eyebrow">Curriculum Vitae · Digital Marketing &amp; Growth</div>
+      <h1 class="name">Joko <em>Susilo</em></h1>
+      <p class="role-line">Marketing Supervisor · Content &amp; Growth Strategist · Ads Specialist</p>
+      <div class="hero-meta">
+        <span>Surabaya, Indonesia</span>
+        <span>·</span>
+        <span><a href="https://wa.me/6281259332169">+62 812-5933-2169</a></span>
+        <span>·</span>
+        <span><a href="mailto:jokosslo28@gmail.com">jokosslo28@gmail.com</a></span>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="summary-band">
-  <div class="wrap">
-    <p>Marketing Supervisor with <strong>6+ years of experience</strong> across design, content, and performance marketing. Leads a team that grew audiences from hundreds of thousands to <strong>millions of followers</strong> across Instagram, TikTok, and YouTube. Content strategy and affiliate programs contributed to a <strong>tenfold increase</strong> in daily sales. Beyond the core role, handles TikTok Shop Ads and social media growth projects for brands in different categories, with a track record of <strong>ROI consistently above 7×</strong>.</p>
+<div class="wrap">
+  <div class="summary">
+    <p>Marketing Supervisor, Content &amp; Growth Strategist based in Surabaya with over 7 years of professional experience. My expertise includes developing and managing social media strategies, producing engaging content, and optimizing campaigns across platforms such as Instagram, TikTok, and YouTube. I have a proven track record of working effectively with marketing teams, whether through close collaboration or independently. My passion for marketing drives me to continuously learn and master a wide range of skills, from building data-driven strategies to solving problems systematically. I'm a creative problem-solver who enjoys adapting to new trends and challenges.</p>
   </div>
 </div>
 
@@ -349,109 +336,97 @@
 <section id="experience">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-glyph">no. 1 —</span>
-      <h2 class="section-title">Professional Experience</h2>
+      <span class="section-badge">no. 1</span>
+      <h2 class="section-title">Work Experience</h2>
     </div>
 
     <div class="timeline">
 
       <div class="role current">
-        <div>
+        <div class="role-top">
+          <h3 class="role-title">Marketing Supervisor</h3>
           <div class="role-period">Oct 2024 — Present</div>
-          <div class="role-org">PT Kayuan Infarm Indonesia</div>
         </div>
-        <div>
-          <h3 class="role-title">Marketing Supervisor (SPV Marketing)</h3>
-          <span class="role-tag">Current role</span>
-          <ul class="role-points">
-            <li>Leading 3 sub-teams (Graphic Design, Content Creator, KOL &amp; Affiliate) plus a Planning Specialist — <strong>12 people in total</strong>, including capacity development for team leads</li>
-            <li>Developing monthly, quarterly, and yearly target projections and budgeting as the basis for team resource allocation</li>
-            <li>Designing and monitoring cross-team KPIs — measuring <strong>ROI, CPA, CPM, CPV</strong>, and marketing funnel performance (TOFU/MOFU/BOFU)</li>
-            <li>Shaping long- and short-term department strategy: key messaging, product push, and competitor analysis</li>
-            <li>Analyzing customer insights to shape content strategy that addresses specific customer pain points</li>
-            <li>Building a weekly and monthly performance tracking system as the basis for evaluation and decision-making</li>
-          </ul>
-        </div>
+        <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        <span class="role-tag">Current Role</span>
+        <ul class="role-points">
+          <li>Lead 3 sub-teams (Graphic Design, Content Creator, KOL &amp; Affiliate) plus a Planning Specialist — 12 people in total</li>
+          <li>Develop monthly, quarterly, and annual target projections and budgeting as the basis for team resource allocation</li>
+          <li>Design and monitor cross-team KPIs — tracking ROI, CPA, CPM, CPV, and marketing funnel performance (TOFU/MOFU/BOFU)</li>
+          <li>Set long- and short-term department strategy: key messaging, product push, and competitor analysis</li>
+          <li>Analyze customer insights to shape content strategy that addresses specific customer pain points</li>
+          <li>Build weekly and monthly performance tracking systems as the basis for evaluation and decision-making</li>
+        </ul>
       </div>
 
       <div class="role">
-        <div>
-          <div class="role-period">Dec 2022 — Oct 2024</div>
-          <div class="role-org">PT Kayuan Infarm Indonesia</div>
-        </div>
-        <div>
+        <div class="role-top">
           <h3 class="role-title">Marketing Leader</h3>
-          <ul class="role-points">
-            <li>Led 3 teams (Graphic Design, Content Creator, KOL &amp; Affiliate) — hands-on execution of content strategy, editorial calendar, affiliate programs, and daily creative direction</li>
-            <li>Scaled organic content from <strong>24M to 60M+ views/month</strong> (95% organic traffic)</li>
-            <li>Grew the YouTube channel from <strong>23K to 439K subscribers</strong>, earning a <strong>Silver Play Button</strong> (Dec 2022)</li>
-            <li>Developed and managed <strong>10 social media accounts</strong> in parallel, building a cross-platform ecosystem of mutually reinforcing channels</li>
-            <li>Designed end-to-end affiliate program strategy: KOL recruitment, commission schemes, and campaign activation</li>
-            <li>Designed per-team KPI frameworks, analyzed weekly and monthly performance, and delivered monthly reporting to management</li>
-          </ul>
+          <div class="role-period">Dec 2022 — Oct 2024</div>
         </div>
+        <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        <ul class="role-points">
+          <li>Led 3 teams (Graphic Design, Content Creator, KOL &amp; Affiliate) — hands-on execution of content strategy, editorial calendar, affiliate program, and daily creative direction</li>
+          <li>Held final sign-off on all creative output from the marketing team — ensuring every design, video, and copy stayed consistent with brand voice before publishing</li>
+          <li>Developed and was responsible for 10 social media accounts in parallel, turning them into a cross-platform ecosystem that reinforced each other</li>
+          <li>Designed the end-to-end affiliate program strategy: KOL recruitment, commission schemes, and campaign activation</li>
+          <li>Built KPI frameworks per team, analyzed weekly and monthly performance, and delivered monthly reporting to management</li>
+        </ul>
       </div>
 
       <div class="role">
-        <div>
+        <div class="role-top">
+          <h3 class="role-title">Content Creator</h3>
           <div class="role-period">May 2022 — Nov 2022</div>
-          <div class="role-org">PT Kayuan Infarm Indonesia</div>
         </div>
-        <div>
-          <h3 class="role-title">Content Creator</h3>
-          <ul class="role-points">
-            <li>End-to-end video production (trend research, scripting, filming, editing in CapCut &amp; Adobe Premiere) for educational and storytelling gardening content on TikTok, Instagram, and YouTube</li>
-            <li>Doubled daily sales — <strong>from 400–500 to 800–1,000 packages</strong> within 6 months — through content strategy</li>
-            <li>Defined content pillars and brand archetype, and established content production SOPs</li>
-            <li>Content produced contributed to winning the <strong>TikTok Most Wanted Brand Award 2022</strong></li>
-          </ul>
-        </div>
+        <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        <ul class="role-points">
+          <li>Produced videos end-to-end (trend research, scripting, filming, editing in CapCut &amp; Adobe Premiere) for gardening education and storytelling content on TikTok, Instagram, and YouTube</li>
+          <li>Defined content pillars and brand archetype, and built the content production SOP</li>
+          <li>Shaped content strategy based on current social media trend research</li>
+          <li>Built weekly content plans as the team's execution roadmap — keeping production focused while staying agile enough to track fast-moving trends</li>
+          <li>Compiled monthly performance reports as the basis for content evaluation and iteration</li>
+        </ul>
       </div>
 
       <div class="role">
-        <div>
+        <div class="role-top">
+          <h3 class="role-title">Graphic Designer</h3>
           <div class="role-period">Oct 2021 — Apr 2022</div>
-          <div class="role-org">PT Kayuan Infarm Indonesia</div>
         </div>
-        <div>
-          <h3 class="role-title">Graphic Designer</h3>
-          <ul class="role-points">
-            <li>Defined design concept and product character for the packaging rebrand across the full product line</li>
-            <li>Designed promotional materials, social media feeds, key visuals, marketplace banners, and product catalogs</li>
-            <li>Maintained visual brand identity consistency across social media and marketplace platforms (Shopee &amp; TikTok Shop)</li>
-            <li>Handled product photography and retouching per company needs</li>
-          </ul>
-        </div>
+        <div class="role-org">PT Kayuan Infarm Indonesia</div>
+        <ul class="role-points">
+          <li>Defined the design concept and product character for a packaging rebrand across the entire product line</li>
+          <li>Designed promotional materials, social media feed content, key visuals, marketplace banners, and product catalogs</li>
+          <li>Maintained visual brand identity consistency across social media and marketplace platforms (Shopee &amp; TikTok Shop)</li>
+          <li>Handled product photography and retouching as needed by the company</li>
+        </ul>
       </div>
 
       <div class="role">
-        <div>
-          <div class="role-period">Jul 2021 — Sep 2021</div>
-          <div class="role-org">CV Amelia Shop</div>
-        </div>
-        <div>
+        <div class="role-top">
           <h3 class="role-title">Content Creator</h3>
-          <ul class="role-points">
-            <li>Designed marketplace banners, promotional materials, social media feeds, and product catalogs — tailored to each platform's requirements</li>
-            <li>Handled end-to-end product photography, from shooting to retouching</li>
-            <li>Managed content publishing and analyzed performance (views, engagement, follower growth)</li>
-          </ul>
+          <div class="role-period">Jul 2021 — Sep 2021</div>
         </div>
+        <div class="role-org">CV Amelia Shop</div>
+        <ul class="role-points">
+          <li>Designed marketplace banners, promotional materials, social media feed content, and product catalogs — tailored to each platform's requirements</li>
+          <li>Handled product photography end-to-end, from shooting to retouching</li>
+          <li>Managed content publishing and analyzed performance (views, engagement, follower growth)</li>
+        </ul>
       </div>
 
       <div class="role">
-        <div>
-          <div class="role-period">Nov 2018 — Jul 2021</div>
-          <div class="role-org">Maxiplus Digital Printing</div>
-        </div>
-        <div>
+        <div class="role-top">
           <h3 class="role-title">Graphic Designer</h3>
-          <ul class="role-points">
-            <li>Designed posters, logos, banners, and various promotional materials per digital printing client briefs</li>
-            <li>Translated client requirements into print-ready designs, including production file adjustments</li>
-            <li>Entrusted with additional responsibilities handling online customers via WhatsApp, cashier duties, and store operations</li>
-          </ul>
+          <div class="role-period">Nov 2018 — Jul 2021</div>
         </div>
+        <div class="role-org">Maxiplus Digital Printing</div>
+        <ul class="role-points">
+          <li>Designed posters, logos, banners, and various promotional materials based on digital printing client briefs</li>
+          <li>Translated client requirements into print-ready designs, including file adjustments for production</li>
+          <li>Trusted with additional responsibilities handling online customers via WhatsApp, cashier duties, and store operations</li>
+        </ul>
       </div>
 
     </div>
@@ -462,144 +437,55 @@
 <section id="freelance">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-glyph">no. 2 —</span>
-      <h2 class="section-title">Independent Projects — Ads &amp; Social Growth</h2>
+      <span class="section-badge">no. 2</span>
+      <h2 class="section-title">Freelance Experience</h2>
     </div>
 
-    <div class="freelance-block">
-      <div class="freelance-head">
-        <h3>Bluecore &amp; Claryn — TikTok Shop Ads Specialist</h3>
-        <span class="freelance-period">Nov 2025 — Feb 2026</span>
-      </div>
-      <p class="freelance-desc">Managed GMV Max campaigns in TikTok Ads Manager for two brands in parallel, covering budget planning, bidding &amp; targeting optimization, and weekly/monthly performance evaluation.</p>
+    <div class="timeline">
 
-      <div class="spark-row">
-        <div class="spark-card">
-          <div class="spark-top">
-            <span class="m-label">Store Revenue Trend — Bluecore</span>
-            <span class="spark-roi">ROI 7.14×</span>
-          </div>
-          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
-            <polyline points="0,44 15,42 30,40 45,43 60,38 75,41 90,36 105,39 120,34 135,37 150,32 165,35 180,30 195,26 210,22 225,25 240,15 255,20 270,10 285,16 300,8"/>
-          </svg>
-          <div class="spark-note">Nov 2025 – Feb 2026</div>
+      <div class="role">
+        <div class="role-top">
+          <h3 class="role-title">Social Media Specialist</h3>
+          <div class="role-period">Freelance · 3 months</div>
         </div>
-        <div class="spark-card">
-          <div class="spark-top">
-            <span class="m-label">Store Revenue Trend — Claryn</span>
-            <span class="spark-roi">ROI 7.34×</span>
-          </div>
-          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
-            <polyline points="0,46 15,44 30,20 45,42 60,38 75,40 90,35 105,38 120,30 135,34 150,28 165,32 180,26 195,30 210,24 225,28 240,22 255,26 270,4 285,18 300,15"/>
-          </svg>
-          <div class="spark-note">Dec 2025 – Feb 2026</div>
-        </div>
+        <div class="role-org">Coozmeed</div>
+        <ul class="role-points">
+          <li>Researched content ideas and wrote scripts for weekly production needs</li>
+          <li>Analyzed the performance of published content on TikTok and Instagram to inform the next strategy</li>
+          <li>Compiled weekly and monthly performance reports</li>
+          <li>Provided visual hook improvement direction to the brand's internal team</li>
+        </ul>
       </div>
 
-      <div class="metric-grid">
-        <div class="metric-card">
-          <div class="m-label">Campaign ROI</div>
-          <div class="m-value">Consistently &gt; 7×</div>
+      <div class="role">
+        <div class="role-top">
+          <h3 class="role-title">Ads Marketplace Specialist</h3>
+          <div class="role-period">Nov 2025 — Feb 2026</div>
         </div>
-        <div class="metric-card">
-          <div class="m-label">Total Orders (2 Brands)</div>
-          <div class="m-value">~84,500</div>
-        </div>
-        <div class="metric-card">
-          <div class="m-label">Ad Spend / Month</div>
-          <div class="m-value">IDR 135–180M</div>
-        </div>
+        <div class="role-org">Bluecore</div>
+        <ul class="role-points">
+          <li>Monitored daily TikTok ad performance and ran ongoing optimization</li>
+          <li>Analyzed the performance of every active campaign as the basis for decision-making</li>
+          <li>Developed ad strategy and analyzed each product's video creative to provide feedback to the internal team</li>
+          <li>Compiled weekly and monthly performance reports</li>
+        </ul>
       </div>
 
-    </div>
-
-    <div class="freelance-block">
-      <div class="freelance-head">
-        <h3>Coozmed — Social Media Growth Specialist</h3>
-        <span class="freelance-period">Project-based</span>
-      </div>
-      <p class="freelance-desc">Organic growth strategy across TikTok and Instagram.</p>
-
-      <div class="growth-callout">
-        <div class="growth-x">~9.7×</div>
-        <div class="growth-body">
-          <div class="m-label">Follower Growth Trend — TikTok &amp; Instagram (Mirrored)</div>
-          <svg class="sparkline" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
-            <polyline points="0,52 20,51 40,50 60,48 80,46 100,43 120,40 140,36 160,32 180,28 200,24 220,19 240,15 260,11 280,8 300,5"/>
-          </svg>
-          <div class="growth-caption">Organic growth of nearly 10x — a similar trend occurred in parallel across TikTok and Instagram</div>
+      <div class="role">
+        <div class="role-top">
+          <h3 class="role-title">Ads Marketplace Specialist</h3>
+          <div class="role-period">Dec 2025 — Feb 2026</div>
         </div>
+        <div class="role-org">Claryn</div>
+        <ul class="role-points">
+          <li>Monitored daily TikTok ad performance and ran ongoing optimization</li>
+          <li>Analyzed the performance of every active campaign and developed ad strategy</li>
+          <li>Analyzed each product's video creative and provided feedback to the internal team</li>
+          <li>Recommended stock-safety measures and potential creators to support ad performance</li>
+          <li>Compiled weekly and monthly performance reports</li>
+        </ul>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-glyph">no. 3 —</span>
-      <h2 class="section-title">Achievements Summary</h2>
-    </div>
-    <table class="achieve-table">
-      <thead>
-        <tr>
-          <th>Channel / Project</th>
-          <th>Before</th>
-          <th>After</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Instagram (Infarm)</td>
-          <td class="num">300K</td>
-          <td class="num">1.6M</td>
-          <td>Verified blue checkmark</td>
-        </tr>
-        <tr>
-          <td>TikTok (Infarm)</td>
-          <td class="num">200K</td>
-          <td class="num">933K</td>
-          <td>Verified blue checkmark</td>
-        </tr>
-        <tr>
-          <td>YouTube (Infarm)</td>
-          <td class="num">23K</td>
-          <td class="num">439K</td>
-          <td>Silver Play Button (Dec 2022)</td>
-        </tr>
-        <tr>
-          <td>Monthly organic views (Infarm)</td>
-          <td class="num">24M</td>
-          <td class="num">60M+</td>
-          <td>2022–2024 · 95% organic traffic</td>
-        </tr>
-        <tr>
-          <td>Daily sales (Infarm)</td>
-          <td class="num">400–500 packages</td>
-          <td class="num">4,500–5,000 packages</td>
-          <td>Cumulative 2022–2024 (2022 content phase: 2× to 800–1,000) · driven by marketing team's content &amp; affiliate strategy</td>
-        </tr>
-        <tr>
-          <td>TikTok &amp; Instagram (Coozmed, freelance)</td>
-          <td class="num">—</td>
-          <td class="num">~9.7× growth</td>
-          <td>Organic, mirrored trend across both platforms</td>
-        </tr>
-        <tr>
-          <td>Bluecore &amp; Claryn Ads (freelance)</td>
-          <td class="num">—</td>
-          <td class="num">ROI &gt; 7× · ~84,500 orders</td>
-          <td>Two brands, parallel campaigns, spend of IDR 135–180M/month</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="award-row">
-      <div class="award">🏆 TikTok Most Wanted Brand Award <span class="yr">2022</span></div>
-      <div class="award">▶ YouTube Silver Play Button <span class="yr">Dec 2022</span></div>
-      <div class="award">★ Brand Choice Awards</div>
     </div>
   </div>
 </section>
@@ -608,79 +494,78 @@
 <section id="skills">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-glyph">no. 4 —</span>
+      <span class="section-badge">no. 3</span>
       <h2 class="section-title">Skills</h2>
     </div>
 
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h4>Strategy &amp; Leadership</h4>
-        <div class="chip-row">
-          <span class="chip hot">Team Leadership (12 people)</span>
-          <span class="chip hot">Budgeting &amp; Target Projection</span>
-          <span class="chip">KPI Framework Design</span>
-          <span class="chip">Strategic Planning</span>
-          <span class="chip">Team Lead Development</span>
-          <span class="chip">Competitor Analysis</span>
+    <div class="skills-wrap">
+      <div class="skill-row">
+        <div class="skill-label">Strategy &amp; Leadership</div>
+        <div class="skill-pills">
+          <span class="pill">Strategic Planning</span>
+          <span class="pill">Budgeting &amp; Target Projection</span>
+          <span class="pill">KPI Framework Design</span>
+          <span class="pill">Competitor Analysis</span>
         </div>
       </div>
-
-      <div class="skill-group">
-        <h4>Marketing &amp; Analytics</h4>
-        <div class="chip-row">
-          <span class="chip hot">TikTok Shop Ads (GMV Max)</span>
-          <span class="chip hot">ROI / CPA / CPM / CPV Tracking</span>
-          <span class="chip">Marketing Funnel (TOFU/MOFU/BOFU)</span>
-          <span class="chip">Customer Insight Analysis</span>
-          <span class="chip">KOL &amp; Affiliate Management</span>
-          <span class="chip">Shopee &amp; TikTok Seller Center</span>
-          <span class="chip">Google Sheets Analytics</span>
+      <div class="skill-row">
+        <div class="skill-label">Content &amp; Growth</div>
+        <div class="skill-pills">
+          <span class="pill">Content Strategy</span>
+          <span class="pill">Content Pillar &amp; Brand Archetype</span>
+          <span class="pill">Scripting &amp; Storyboard</span>
+          <span class="pill">Content Production SOP</span>
+          <span class="pill">Marketing Funnel</span>
+          <span class="pill">KOL &amp; Affiliate Management</span>
         </div>
       </div>
-
-      <div class="skill-group">
-        <h4>Content &amp; Growth</h4>
-        <div class="chip-row">
-          <span class="chip hot">Content Strategy — TikTok / IG / YouTube</span>
-          <span class="chip">Scripting &amp; Storyboard</span>
-          <span class="chip">Content Pillars &amp; Brand Archetype</span>
-          <span class="chip">Content Production SOPs</span>
-          <span class="chip">End-to-End Video Production</span>
+      <div class="skill-row">
+        <div class="skill-label">Ads &amp; Performance</div>
+        <div class="skill-pills">
+          <span class="pill">TikTok Ads</span>
+          <span class="pill">Campaign Optimization</span>
+          <span class="pill">Video Creative Analysis</span>
         </div>
       </div>
-
-      <div class="skill-group">
-        <h4>Design &amp; Production</h4>
-        <div class="chip-row">
-          <span class="chip">Adobe Photoshop</span>
-          <span class="chip">Adobe Premiere Pro</span>
-          <span class="chip">CapCut</span>
-          <span class="chip">CorelDRAW</span>
-          <span class="chip">Product Photography &amp; Retouching</span>
-          <span class="chip">2D Animation</span>
+      <div class="skill-row">
+        <div class="skill-label">Design &amp; Multimedia</div>
+        <div class="skill-pills">
+          <span class="pill">Graphic Design</span>
+          <span class="pill">Video Editing</span>
+          <span class="pill">Photo Editing &amp; Retouching</span>
+          <span class="pill">2D Animation</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION & LANGUAGES -->
-<section id="education">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-glyph">no. 5 —</span>
-      <h2 class="section-title">Education &amp; Languages</h2>
-    </div>
-    <div class="edu-lang-grid">
-      <div>
-        <h4>SMK Negeri 1 Poncol</h4>
-        <div class="sub">Multimedia — Graduated 2018</div>
-        <div class="fine">Video production, magazine design, 2D animation, graphic design, computer installation</div>
+      <div class="skill-row">
+        <div class="skill-label">Software</div>
+        <div class="skill-pills">
+          <span class="pill">Adobe Photoshop</span>
+          <span class="pill">Adobe Premiere Pro</span>
+          <span class="pill">CapCut</span>
+          <span class="pill">CorelDRAW</span>
+        </div>
       </div>
-      <div>
-        <h4>Languages</h4>
-        <div class="sub">Indonesian — Native</div>
-        <div class="sub">English — Intermediate (Business Communication)</div>
+      <div class="skill-row">
+        <div class="skill-label">Soft Skills</div>
+        <div class="skill-pills">
+          <span class="pill">Leadership</span>
+          <span class="pill">Communication</span>
+          <span class="pill">Problem Solving</span>
+          <span class="pill">Adaptability</span>
+          <span class="pill">Teamwork</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Management Tools</div>
+        <div class="skill-pills">
+          <span class="pill">ClickUp</span>
+          <span class="pill">Trello</span>
+          <span class="pill">Notion</span>
+          <span class="pill">Google Spreadsheet</span>
+          <span class="pill">Google Doc</span>
+          <span class="pill">Google Drive</span>
+          <span class="pill">Ms. Office</span>
+        </div>
       </div>
     </div>
   </div>
@@ -688,7 +573,7 @@
 
 <footer>
   <div class="sig">Joko Susilo</div>
-  Marketing Supervisor &amp; Growth Specialist · Surabaya, Indonesia · 0812-5933-2169 · jokosslo28@gmail.com
+  Marketing Supervisor &amp; Growth Specialist · Surabaya, Indonesia · +62 812-5933-2169 · jokosslo28@gmail.com
 </footer>
 
 </body>
